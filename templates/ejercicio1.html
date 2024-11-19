@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Ejercicio 1: Promedio y Estado</h1>
+        <form method="POST">
+            <label>Nota 1:</label><input type="number" name="nota1" required>
+            <label>Nota 2:</label><input type="number" name="nota2" required>
+            <label>Nota 3:</label><input type="number" name="nota3" required>
+            <label>Asistencia (%):</label><input type="number" name="asistencia" required>
+            <button type="submit">Calcular</button>
+        </form>
+        {% if resultado %}
+            {% if resultado.error %}
+                <p style="color: red;">{{ resultado.error }}</p>
+            {% else %}
+                <p>Promedio: {{ resultado.promedio }}</p>
+                <p>Estado: {{ resultado.estado }}</p>
+            {% endif %}
+        {% endif %}
+        <button onclick="window.location.href='/'">Volver al Menú Principal</button>
+    </div>
+</body>
+</html>
